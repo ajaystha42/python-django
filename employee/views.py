@@ -12,7 +12,7 @@ def emp(request):
         if form.is_valid():
             try:
                 form.save()
-                return redirect('/show')
+                return redirect('/')
             except:
                 pass
     else:
@@ -35,11 +35,11 @@ def update(request, id):
     form = EmployeeForm(request.POST, instance=employee)
     if form.is_valid():
         form.save()
-        return redirect('/show')
+        return redirect('/')
     return render(request, 'edit.html', {'employee': employee})
 
 
 def destroy(request, id):
     employee = Employee.objects.get(id=id)
     employee.delete()
-    return redirect('/show')
+    return redirect('/')
